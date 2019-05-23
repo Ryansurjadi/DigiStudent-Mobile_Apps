@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="fti">
+    <ion-title>
+      Detail Dokumen
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let dd of dataDokumen">
+    <ion-card-content>
+      <ion-card-title>
+        {{dd.Judul}}
+      </ion-card-title>
+      <hr>
+      <p>
+        <b>Nomor Dokumen</b> : {{dd.Nomor}}
+      </p>
+      <p>
+        <b>Tipe Dokumen</b> : {{dd.Tipe}}
+      </p>
+      <p>
+        <b> Keterangan</b> : {{dd.Keterangan}}
+      </p>
+      <p>
+        <b> Tanggal Upload</b> :{{dd.Tanggal | date :'MMM d, y'}}
+      </p>
+      <br>
+      <div style="text-align: center;">
+        <button ion-button small color="primary" class="right" (click)=download(ID,dd.File)>Download</button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

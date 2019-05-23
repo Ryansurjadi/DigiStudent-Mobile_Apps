@@ -1,0 +1,34 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content>
+  <div class="logo">
+    <img style="width:135px;height: 135px;" src="../../assets/imgs/login-icon.png" />
+  </div>
+  <ion-card class="content">
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="Inputemail"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Kata Sandi</ion-label>
+          <ion-input type="password" [(ngModel)]="Inputpassword"></ion-input>
+        </ion-item>
+
+      </ion-list>
+      <div padding>
+        <button ion-button full style="background-color: #663399" (click)="login()">Masuk</button>
+        <a style="text-align: center; display: block; color: #663399" (click)="forgot()">Lupa Kata Sandi ?</a>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

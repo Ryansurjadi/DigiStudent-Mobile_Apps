@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>{{judul_page}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Tarik Untuk Refresh Halaman" refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar placeholder="Cari Penulis Skripsi" [(ngModel)]="keyword.Mahasiswa"></ion-searchbar>
+  <ion-list *ngIf="dataSkripsi != null">
+    <ion-card *ngFor="let ds of dataSkripsi | filterBy:keyword">
+      <ion-card-content (click)="download(ds.Id,ds.File)">
+        <ion-card-title>
+          <p>{{ds.Judul}} - ({{ds.Tahun_lulus}})</p>
+        </ion-card-title>
+        <hr>
+        <p>
+          {{ds.Mahasiswa | slice:0:15}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content *ngIf="(dataSkripsi | filterBy: keyword).length === 0">
+        <p>
+          Data Skripsi yang di Cari Tidak Ada
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-list *ngIf="dataSkripsi == null">
+    <ion-card>
+      <ion-card-content>
+        <p>
+          Tidak Ada Data Skripsi
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

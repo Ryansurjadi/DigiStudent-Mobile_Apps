@@ -1,0 +1,48 @@
+<!--
+  Generated template for the DokumenPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>{{judul}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Tarik Untuk Refresh Halaman" refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar placeholder="Cari Nama Dokumen" [(ngModel)]="keyword.Judul"></ion-searchbar>
+  <ion-list *ngIf="dataDokumen != null">
+    <ion-card *ngFor="let dd of dataDokumen | filterBy:keyword">
+      <ion-card-content (click)="openDetailDokumen(dd.Id)">
+        <ion-card-title>
+          <p>{{dd.Nomor}} - ({{dd.Tipe}})</p>
+        </ion-card-title>
+        <hr>
+        <p>
+          {{dd.Judul}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content *ngIf="(dataDokumen | filterBy: keyword).length === 0">
+        <p>
+          Data Dokumen yang di Cari Tidak Ada
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-list *ngIf="dataDokumen == null">
+    <ion-card>
+      <ion-card-content>
+        <p>
+          Tidak Ada Data Dokumen
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

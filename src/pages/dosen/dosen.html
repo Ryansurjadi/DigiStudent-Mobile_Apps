@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>{{judul}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Tarik Untuk Refresh Halaman" refreshingSpinner="dots">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar placeholder="Cari Nama Dosen" [(ngModel)]="keyword.Nama"></ion-searchbar>
+
+  <ion-list *ngIf="dataDosen != null">
+    <ion-card *ngFor="let data of dataDosen | filterBy: keyword">
+      <ion-card-content>
+        <ion-row>
+          <ion-col col-4>
+            <ion-avatar>
+              <img src="{{data.Foto}}" style="height: 55px;width: 55px;">
+            </ion-avatar>
+          </ion-col>
+          <ion-col col-8>
+            <ion-card-title>
+              <p style="font-size: 12px;">{{data.Nama}}</p>
+            </ion-card-title>
+            <p style="font-size: 10px;">
+              {{data.Email}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row style="float: right !important;padding-top: 0 !important;padding-bottom: 6px !important;">
+          <ion-buttons start>
+            <a ion-button small color="primary" outline href="mailto:{{data.Email}}">
+              <ion-icon name="email"></ion-icon>Email
+            </a>
+          </ion-buttons>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content *ngIf="(dataDosen | filterBy: keyword).length === 0">
+        <p>
+          Tidak Ada Data Dosen
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="dataDosen == null">
+    <ion-card>
+      <ion-card-content>
+        <p>
+          Data Dosen yang di Cari Tidak Ada
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,149 @@
+<ion-header no-border>
+  <ion-toolbar color="fti">
+    <ion-title>{{judul}}</ion-title>
+    <ion-buttons end (click)="goToNotifikasi()">
+      <button ion-button icon-only color="black">
+        <ion-icon name="notifications-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class=" container-atas">
+    <ion-row>
+      <ion-col col-12 class="col-info">
+        <ion-card>
+          <ion-card-header style="padding-bottom: 3px !important;padding-top: 10px !important;">
+            Menu Pintas
+          </ion-card-header>
+          <hr>
+          <ion-card-content class="content" *ngIf="level == 'Mahasiswa'">
+            <ion-row class=" row-beranda">
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #0097e6;" (click)="goToNotes()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="list-box"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Catatan</p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #e15f41;" (click)="goToMateri()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="folder-open"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Materi</p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #2ed573;" (click)="goToJadwal()">
+                  <h1 style=" text-align: center; color: white">
+                    <ion-icon name="calendar"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">
+                    Jadwal
+                  </p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
+                <ion-card color="danger" (click)="logout()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="log-out"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Keluar </p>
+                </ion-card>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+
+          <ion-card-content class="content" *ngIf="level == 'Dosen'">
+            <ion-row class=" row-beranda">
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #0097e6;" (click)="goToNotes()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="list-box"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Catatan</p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #ff7f50;" (click)="goToSkripsi()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="document"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Skripsi</p>
+                </ion-card>
+              </ion-col>
+              <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #e15f41;" (click)="goToDosen()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="people"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Dosen</p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
+                <ion-card color="danger" (click)="logout()">
+                  <h1 style=" text-align: center; color: white">
+                    <ion-icon name="log-out"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">
+                    Keluar
+                  </p>
+                </ion-card>
+              </ion-col>
+
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="container">
+    <ion-row>
+      <ion-col col-12 class="col-pengumuman">
+        <ion-card style="background-color: white;">
+          <ion-card-header style="background:linear-gradient(to right, #ff00cc, #333399);color:white ;padding-bottom: 5px !important; padding-top: 5px
+            !important;">
+            <b>Pengumuman Akademik</b>
+          </ion-card-header>
+          <ion-slides pager *ngIf="dataPengumuman != null">
+            <ion-slide *ngFor="let dp of dataPengumuman">
+              <ion-card (click)="openDetailPengumuman(dp.Id_informasi)">
+                <img class="pengumuman-img" src="{{dp.Foto}}" />
+                <ion-card-content>
+                  <ion-card-title>
+                    {{dp.Judul_informasi}}
+                  </ion-card-title>
+                  <p>{{dp.Isi | slice:0:40}}... </p>(Tap untuk membaca)
+                  <br><br>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+
+          <ion-slides pager *ngIf="dataPengumuman == null">
+            <!-- <ion-slide> -->
+            <ion-card>
+              <!-- <img class="pengumuman-img" src="{{dp.Foto}}" /> -->
+              <ion-card-content>
+                <p>Tidak Ada Pengumuman</p>
+              </ion-card-content>
+            </ion-card>
+            <!-- </ion-slide> -->
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

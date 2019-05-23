@@ -1,0 +1,111 @@
+<ion-content padding class="transparent-header"
+  *ngIf="((dataProfil && dataUser)!=null) &&((level !=null) &&(level === 'Mahasiswa'))">
+  <div id="profile-bg"></div>
+  <div id="content">
+    <div id="profile-info" padding>
+      <div (click)="showConfirm()">
+        <img id="profile-image" [src]="dataUser.Foto">
+        <!-- <div class="camera"></div> -->
+      </div>
+      <h5 id="profile-name">{{dataProfil.Nama}}</h5>
+      {{dataUser.Level}} &bull; {{dataProfil.Angkatan}}
+    </div>
+    <hr />
+  </div>
+  <ion-list no-lines>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-icon name="desktop" color="primary" item-start></ion-icon>
+          <p><b>Prodi</b></p>
+          <p style="font-size: 12px">{{dataProfil.Id_prodi}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-icon name="book" color="primary" item-start></ion-icon>
+          <p><b>Semester</b></p>
+          <p style="font-size: 12px">{{dataProfil.Semester}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6>
+        <ion-item>
+          <ion-icon name="stats" color="primary" item-start></ion-icon>
+          <p><b>IPK</b></p>
+          <p style="font-size: 12px">{{dataProfil.IPK}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+      <ion-col col-6>
+        <ion-item>
+          <ion-icon name="checkbox-outline" color="primary" item-start></ion-icon>
+          <p><b>Total SKS</b></p>
+          <p style="font-size: 12px">{{dataProfil.SKS}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="mail" color="primary" item-start></ion-icon>
+          <p><b>Email</b></p>
+          <p style="font-size: 12px">{{dataUser.Email}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="call" color="primary" item-start></ion-icon>
+          <p><b>Telepon</b></p>
+          <p style="font-size: 12px">{{dataProfil.No_telepon}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block color="danger" (click)="logout()">Keluar</button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>
+
+<ion-content padding class="transparent-header"
+  *ngIf="((dataProfil && dataUser)!=null) && ((level !=null) &&(level === 'Dosen'))">
+  <div id="profile-bg"></div>
+  <div id="content">
+    <div id="profile-info" padding>
+      <div (click)="showConfirm()">
+        <img id="profile-image" [src]="dataUser.Foto">
+        <!-- <div class="camera"></div> -->
+      </div>
+      <h5 id="profile-name">{{dataProfil.Nama}}</h5>
+      {{dataUser.Level}} &bull; {{dataProfil.Id_prodi}}
+    </div>
+    <hr />
+  </div>
+  <ion-list no-lines>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="mail" color="primary" item-start></ion-icon>
+          <p><b>Email</b></p>
+          <p style="font-size: 12px">{{dataUser.Email}}</p>
+          <!-- <a button ion-button href="mailto:{{dataUser.email}}" color="primary" item-end medium>Open App</a> -->
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button block color="danger" (click)="logout()">Keluar</button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

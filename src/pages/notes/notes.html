@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>
+      Catatan
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addNotes()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item (click)="viewNotesDetail(item)">
+        {{item.title}}
+      </ion-item>
+
+      <ion-item-options>
+        <button ion-button icon-start color="danger" (click)="removeNotes(item)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

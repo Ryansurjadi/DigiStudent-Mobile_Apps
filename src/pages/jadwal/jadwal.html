@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <ion-title>
+      {{judul}}
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="jadwal">
+      <ion-segment-button value="kuliah">
+        Kuliah
+      </ion-segment-button>
+      <ion-segment-button value="ujian">
+        Ujian
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div [ngSwitch]="jadwal">
+    <ion-list *ngSwitchCase="'kuliah'" class="kuliah">
+      <ion-refresher (ionRefresh)="doRefreshkuliah($event)">
+        <ion-refresher-content refreshingSpinner="bubbles">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-card *ngIf="dataJadwalKuliah_senin != null">
+        <ion-card-title>
+          <h4>Senin</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_senin">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="dataJadwalKuliah_selasa !=null">
+        <ion-card-title>
+          <h4>Selasa</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_selasa">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="dataJadwalKuliah_rabu !=null">
+        <ion-card-title>
+          <h4>Rabu</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_rabu">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="dataJadwalKuliah_kamis !=null">
+        <ion-card-title>
+          <h4>Kamis</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_kamis">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="dataJadwalKuliah_jumat !=null">
+        <ion-card-title>
+          <h4>Jumat</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_jumat">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="dataJadwalKuliah_sabtu !=null">
+        <ion-card-title>
+          <h4>Sabtu</h4>
+        </ion-card-title>
+        <ion-card-content *ngFor="let data of dataJadwalKuliah_sabtu">
+          <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
+          <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'ujian'">
+      <ion-refresher (ionRefresh)="doRefreshujian($event)">
+        <ion-refresher-content refreshingSpinner="bubbles">
+        </ion-refresher-content>
+      </ion-refresher>
+
+      <ion-list *ngSwitchCase="'ujian'" class="ujian">
+        <ion-card *ngIf="dataJadwalUjian_senin != null">
+          <ion-card-title>
+            <h4>Senin</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_senin">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="dataJadwalUjian_selasa !=null">
+          <ion-card-title>
+            <h4>Selasa</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_selasa">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="dataJadwalUjian_rabu !=null">
+          <ion-card-title>
+            <h4>Rabu</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_rabu">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="dataJadwalUjian_kamis !=null">
+          <ion-card-title>
+            <h4>Kamis</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_kamis">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="dataJadwalUjian_jumat !=null">
+          <ion-card-title>
+            <h4>Jumat</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_jumat">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card *ngIf="dataJadwalUjian_sabtu !=null">
+          <ion-card-title>
+            <h4>Sabtu</h4>
+          </ion-card-title>
+          <ion-card-content *ngFor="let data of dataJadwalUjian_sabtu">
+            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
+                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
+            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+    </ion-list>
+
+  </div>
+</ion-content>

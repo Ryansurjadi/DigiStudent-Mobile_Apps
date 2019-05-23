@@ -1,0 +1,22 @@
+<!--
+  Generated template for the MateriPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>{{judul}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="dataMateri != null" class="content">
+    <ion-card *ngFor="let data of dataMateri">
+      <ion-card-content>
+        <p>{{data.Matakuliah}} - {{data.Kelas}}</p>
+        <button ion-button small outline class="right" (click)="goToPertemuan(data.Id_kelas)">Lihat Materi</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
