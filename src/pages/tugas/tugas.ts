@@ -2,33 +2,26 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { AlertController } from 'ionic-angular';
-import { Materi } from '../../Materi';
-import { DetailmateriPage } from '../detailmateri/detailmateri';
+import { Tugas } from '../../Tugas';
+import { DetailtugasPage } from '../detailtugas/detailtugas';
 import { Storage } from '@ionic/storage';
-
-/**
- * Generated class for the MateriPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
-  selector: 'page-materi',
-  templateUrl: 'materi.html',
-  // providers: [FileTransfer, FileTransferObject, File]
+  selector: 'page-tugas',
+  templateUrl: 'tugas.html',
 })
-export class MateriPage {
+export class TugasPage {
 
-  dataMateri: Materi[];
+  dataTugas: Tugas[];
 
   judul: any;
-  params: any
+  params: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
     public alerCtrl: AlertController, private storage: Storage, private loadingCtrl: LoadingController) {
-    this.judul = "Materi"
+    this.judul = "Tugas"
+
     storage.get('NIM').then((val) => {
       this.params = val;
     });
@@ -36,9 +29,9 @@ export class MateriPage {
 
   initialRequest() {
     return new Promise((resolve, reject) => {
-      this.restProvider.getMateri(this.params)
+      this.restProvider.getTugas(this.params)
         .subscribe(data => {
-          this.dataMateri = data['data'];
+          this.dataTugas = data['data'];
         },
           error => {
             this.show404();
@@ -62,7 +55,7 @@ export class MateriPage {
   }
 
   goToPertemuan(id) {
-    this.navCtrl.push(DetailmateriPage, { Id_kelas: id });
+    this.navCtrl.push(DetailtugasPage, { Id_kelas: id });
   }
 
 
@@ -76,4 +69,5 @@ export class MateriPage {
     });
     alert.present();
   }
+
 }

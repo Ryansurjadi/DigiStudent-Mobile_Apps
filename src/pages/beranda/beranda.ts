@@ -16,6 +16,7 @@ import { LoginPage } from '../login/login';
 import { Subscription } from 'rxjs/Subscription';
 import { Storage } from '@ionic/storage';
 import { DosenPage } from '../dosen/dosen';
+import { TugasPage } from '../tugas/tugas';
 
 @IonicPage()
 @Component({
@@ -106,6 +107,10 @@ export class BerandaPage {
 
   goToMateri() {
     this.navCtrl.push(MateriPage)
+  }
+
+  goToTugas() {
+    this.navCtrl.push(TugasPage)
   }
 
   openDetailPengumuman(params) {

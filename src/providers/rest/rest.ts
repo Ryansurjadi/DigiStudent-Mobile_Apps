@@ -15,14 +15,10 @@ import { Jadwal_kuliah } from '../../Jadwal_kuliah';
 import { Jadwal_ujian } from '../../Jadwal_ujian';
 import { Materi } from '../../Materi';
 import { Pertemuan } from '../../Pertemuan';
+import { Tugas } from '../../Tugas';
+import { Pertemuan_tugas } from '../../Pertemuan_tugas';
 import { Users } from "../../Users";
 
-/*
-  Generated class for the RestProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 
 @Injectable()
 export class RestProvider {
@@ -119,6 +115,24 @@ export class RestProvider {
   getPertemuan(id): Observable<Pertemuan[]> {
     return this.http
       .get<Pertemuan[]>(this.apiUrl + 'Materi', {
+        params: {
+          Id_kelas: id
+        }
+      });
+  }
+
+  getTugas(id): Observable<Tugas[]> {
+    return this.http
+      .get<Tugas[]>(this.apiUrl + 'Tugas', {
+        params: {
+          NIM: id
+        }
+      });
+  }
+
+  getPertemuanTugas(id): Observable<Pertemuan_tugas[]> {
+    return this.http
+      .get<Pertemuan_tugas[]>(this.apiUrl + 'Tugas', {
         params: {
           Id_kelas: id
         }

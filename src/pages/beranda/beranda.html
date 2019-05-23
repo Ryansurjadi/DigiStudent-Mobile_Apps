@@ -40,6 +40,15 @@
               </ion-col>
 
               <ion-col col-3 class="col-beranda">
+                <ion-card style="background-color: #40407a;" (click)="goToTugas()">
+                  <h1 style="text-align: center; color: white">
+                    <ion-icon name="bookmarks"></ion-icon>
+                  </h1>
+                  <p class="beranda-name" style="text-align: center; color: white">Tugas </p>
+                </ion-card>
+              </ion-col>
+
+              <ion-col col-3 class="col-beranda">
                 <ion-card style="background-color: #2ed573;" (click)="goToJadwal()">
                   <h1 style=" text-align: center; color: white">
                     <ion-icon name="calendar"></ion-icon>
@@ -47,15 +56,6 @@
                   <p class="beranda-name" style="text-align: center; color: white">
                     Jadwal
                   </p>
-                </ion-card>
-              </ion-col>
-
-              <ion-col col-3 class="col-beranda">
-                <ion-card color="danger" (click)="logout()">
-                  <h1 style="text-align: center; color: white">
-                    <ion-icon name="log-out"></ion-icon>
-                  </h1>
-                  <p class="beranda-name" style="text-align: center; color: white">Keluar </p>
                 </ion-card>
               </ion-col>
 

@@ -15,6 +15,8 @@ import { KuliahPage } from '../pages/kuliah/kuliah';
 import { JadwalPage } from '../pages/jadwal/jadwal';
 import { MateriPage } from '../pages/materi/materi';
 import { DetailmateriPage } from "../pages/detailmateri/detailmateri";
+import { TugasPage } from '../pages/tugas/tugas';
+import { DetailtugasPage } from "../pages/detailtugas/detailtugas";
 import { DosenPage } from '../pages/dosen/dosen';
 import { SkripsiPage } from '../pages/skripsi/skripsi';
 
@@ -51,7 +53,8 @@ import { Camera } from '@ionic-native/camera';
     LoginPage, ForgotpasswordPage,
     BerandaPage, NotifikasiPage, DetailpengumumanPage,
     DokumenPage, DetaildokumenPage,
-    KuliahPage, JadwalPage, MateriPage, DetailmateriPage,
+    KuliahPage,
+    JadwalPage, MateriPage, DetailmateriPage, TugasPage, DetailtugasPage,
     DosenPage, SkripsiPage,
     ProfilPage,
     TabsPage,
@@ -70,7 +73,8 @@ import { Camera } from '@ionic-native/camera';
     LoginPage, ForgotpasswordPage,
     BerandaPage, NotifikasiPage, DetailpengumumanPage,
     DokumenPage, DetaildokumenPage,
-    KuliahPage, JadwalPage, MateriPage, DetailmateriPage,
+    KuliahPage,
+    JadwalPage, MateriPage, DetailmateriPage, TugasPage, DetailtugasPage,
     DosenPage, SkripsiPage,
     ProfilPage,
     TabsPage,

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="fti">
+    <ion-title>{{judul}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="dataPertemuan != null" class="content">
+    <ion-card *ngFor="let data of dataPertemuan">
+      <ion-card-content>
+        <p><b>Pertemuan {{data.Pertemuan}}</b></p>
+        <ion-buttons start>
+          <button ion-button small color="primary" class="right"
+            (click)=download(data.Matakuliah,data.Id_kelas,data.Pertemuan,data.File)>
+            <ion-icon name="archive"></ion-icon> &nbsp; Unduh Tugas
+          </button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  <ion-list *ngIf="dataPertemuan == null" class="content">
+    <ion-card>
+      <ion-card-content>
+        <p style="text-align: center;">Belum Ada Tugas Kuliah</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

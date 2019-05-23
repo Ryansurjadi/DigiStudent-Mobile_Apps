@@ -4,6 +4,7 @@ import { JadwalPage } from '../jadwal/jadwal';
 import { SkripsiPage } from '../skripsi/skripsi';
 import { DosenPage } from '../dosen/dosen';
 import { MateriPage } from '../materi/materi';
+import { TugasPage } from '../tugas/tugas';
 
 /**
  * Generated class for the KuliahPage page.
@@ -40,5 +41,9 @@ export class KuliahPage {
 
   goToMateri() {
     this.navCtrl.push(MateriPage)
+  }
+
+  goToTugas() {
+    this.navCtrl.push(TugasPage)
   }
 }
