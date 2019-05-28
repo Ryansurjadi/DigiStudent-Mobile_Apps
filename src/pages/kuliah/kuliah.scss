@@ -32,4 +32,18 @@ page-kuliah {
       }
     }
   }
+
+  .utama {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    padding-bottom: 15px;
+    flex-wrap: wrap;
+    // flex-direction: column;
+    // justify-content: space-between;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
 }
