@@ -4,4 +4,5 @@ export interface Skripsi {
     Tahun_lulus: string;
     Mahasiswa: string;
     File: any;
+    Id_prodi: string;
 }

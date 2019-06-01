@@ -21,7 +21,7 @@
               <ion-title style="padding: 10px !important;"><b>Daftar Tugas</b></ion-title>
               <hr style="height: 2px;">
               <ion-card-content *ngFor="let data of dataList">
-                &bull; Tugas {{data.Matakuliah}} dikumpul {{data.Deadline}}
+                <ion-icon name="clipboard"></ion-icon> &nbsp;Tugas {{data.Matakuliah}} dikumpul {{data.Deadline}}
               </ion-card-content>
             </ion-card>
           </ion-row>

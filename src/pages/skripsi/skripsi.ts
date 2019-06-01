@@ -17,7 +17,7 @@ import { File } from '@ionic-native/file';
 export class SkripsiPage {
 
   dataSkripsi: Skripsi[];
-  keyword: any = { Mahasiswa: '' };
+  keyword: any = { Judul: '' };
   judul_page: any;
   loading: any;
 

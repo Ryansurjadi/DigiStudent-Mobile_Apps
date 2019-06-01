@@ -9,17 +9,25 @@
     <ion-refresher-content pullingText="Tarik Untuk Refresh Halaman" refreshingSpinner="dots">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-searchbar placeholder="Cari Penulis Skripsi" [(ngModel)]="keyword.Mahasiswa"></ion-searchbar>
+  <ion-searchbar placeholder="Cari Judul Skripsi" [(ngModel)]="keyword.Mahasiswa"></ion-searchbar>
   <ion-list *ngIf="dataSkripsi != null">
     <ion-card *ngFor="let ds of dataSkripsi | filterBy:keyword">
-      <ion-card-content (click)="download(ds.Id,ds.File)">
+      <ion-card-content>
         <ion-card-title>
-          <p>{{ds.Judul}} - ({{ds.Tahun_lulus}})</p>
+          <h3>{{ds.Id_prodi}} - {{ds.Tahun_lulus}} </h3>
+          <hr>
+          <p>{{ds.Judul}} </p>
         </ion-card-title>
         <hr>
-        <p>
-          {{ds.Mahasiswa | slice:0:15}}
-        </p>
+        <p style="padding-bottom: 0 !important">
+          {{ds.Mahasiswa }}
+        </p><br>
+        <ion-buttons end style="padding-top: 0 !important">
+          <button style="border-radius: 4px;" ion-button small color="primary" class="right"
+            (click)="download(ds.Id,ds.File)">
+            <ion-icon name="archive"></ion-icon> &nbsp; Unduh Abstrak
+          </button>
+        </ion-buttons>
       </ion-card-content>
     </ion-card>
     <ion-card>

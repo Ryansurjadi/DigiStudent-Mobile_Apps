@@ -56,7 +56,7 @@ export class KuliahPage {
     setTimeout(() => {
       loading.dismiss();
       this.initialRequest();
-    }, 5000);
+    }, 500);
   }
 
   goToJadwal() {

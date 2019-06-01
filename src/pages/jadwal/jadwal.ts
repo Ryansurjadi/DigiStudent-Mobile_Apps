@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { AlertController } from 'ionic-angular';
 
@@ -22,12 +22,7 @@ export class JadwalPage {
   dataJadwalKuliah_jumat: Jadwal_kuliah[];
   dataJadwalKuliah_sabtu: Jadwal_kuliah[];
 
-  dataJadwalUjian_senin: Jadwal_ujian[];
-  dataJadwalUjian_selasa: Jadwal_ujian[];
-  dataJadwalUjian_rabu: Jadwal_ujian[];
-  dataJadwalUjian_kamis: Jadwal_ujian[];
-  dataJadwalUjian_jumat: Jadwal_ujian[];
-  dataJadwalUjian_sabtu: Jadwal_ujian[];
+  dataJadwalUjian: Jadwal_ujian[];
 
   judul: any;
   jadwal: string;
@@ -35,7 +30,7 @@ export class JadwalPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public restProvider: RestProvider, public alerCtrl: AlertController,
-    private storage: Storage) {
+    private storage: Storage, private loadingCtrl: LoadingController) {
     this.judul = "Jadwal"
     this.jadwal = "kuliah"
     storage.get('NIM').then((val) => {
@@ -66,12 +61,7 @@ export class JadwalPage {
     return new Promise((resolve, reject) => {
       this.restProvider.getJadwalujian(this.params)
         .subscribe(data => {
-          this.dataJadwalUjian_senin = data['data'].senin;
-          this.dataJadwalUjian_selasa = data['data'].selasa;
-          this.dataJadwalUjian_rabu = data['data'].rabu;
-          this.dataJadwalUjian_kamis = data['data'].kamis;
-          this.dataJadwalUjian_jumat = data['data'].jumat;
-          this.dataJadwalUjian_sabtu = data['data'].sabtu;
+          this.dataJadwalUjian = data['data'];
         },
           error => {
             this.show404();
@@ -82,8 +72,18 @@ export class JadwalPage {
   }
 
   ionViewWillEnter() {
-    this.initialRequest_JadwalKuliah();
-    this.initialRequest_JadwalUjian();
+    let loading = this.loadingCtrl.create({
+      content: ' Mengambil Data ...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+      this.initialRequest_JadwalKuliah();
+      this.initialRequest_JadwalUjian();
+    }, 500);
+
   }
 
   doRefreshkuliah(refresher) {

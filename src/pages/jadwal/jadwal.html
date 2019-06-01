@@ -27,7 +27,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_senin != null">
         <ion-card-title>
-          <h4>Senin</h4>
+          <h2 style="padding-left: 5px;">Senin</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_senin">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -37,7 +37,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_selasa !=null">
         <ion-card-title>
-          <h4>Selasa</h4>
+          <h2 style="padding-left: 5px;">Selasa</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_selasa">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -47,7 +47,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_rabu !=null">
         <ion-card-title>
-          <h4>Rabu</h4>
+          <h2 style="padding-left: 5px;">Rabu</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_rabu">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -57,7 +57,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_kamis !=null">
         <ion-card-title>
-          <h4>Kamis</h4>
+          <h2 style="padding-left: 5px;">Kamis</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_kamis">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -67,7 +67,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_jumat !=null">
         <ion-card-title>
-          <h4>Jumat</h4>
+          <h2 style="padding-left: 5px;">Jumat</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_jumat">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -77,7 +77,7 @@
 
       <ion-card *ngIf="dataJadwalKuliah_sabtu !=null">
         <ion-card-title>
-          <h4>Sabtu</h4>
+          <h2 style="padding-left: 5px;">Sabtu</h2>
         </ion-card-title>
         <ion-card-content *ngFor="let data of dataJadwalKuliah_sabtu">
           <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></p>
@@ -93,71 +93,28 @@
       </ion-refresher>
 
       <ion-list *ngSwitchCase="'ujian'" class="ujian">
-        <ion-card *ngIf="dataJadwalUjian_senin != null">
-          <ion-card-title>
-            <h4>Senin</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_senin">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
+        <div *ngIf="dataJadwalUjian != null">
+          <ion-card *ngFor="let data of dataJadwalUjian">
+            <ion-card-title>
+              <h2 style="padding-left: 10px;"><b>
+                  {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></h2>
+            </ion-card-title>
+            <ion-card-content>
+              <h3 style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}}</b></h3>
+              <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <div *ngIf="dataJadwalUjian == null">
+          <ion-card>
+            <ion-card-content>
+              <p>
+                Tidak Ada Jadwal Ujian
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </div>
 
-        <ion-card *ngIf="dataJadwalUjian_selasa !=null">
-          <ion-card-title>
-            <h4>Selasa</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_selasa">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card *ngIf="dataJadwalUjian_rabu !=null">
-          <ion-card-title>
-            <h4>Rabu</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_rabu">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card *ngIf="dataJadwalUjian_kamis !=null">
-          <ion-card-title>
-            <h4>Kamis</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_kamis">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card *ngIf="dataJadwalUjian_jumat !=null">
-          <ion-card-title>
-            <h4>Jumat</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_jumat">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card *ngIf="dataJadwalUjian_sabtu !=null">
-          <ion-card-title>
-            <h4>Sabtu</h4>
-          </ion-card-title>
-          <ion-card-content *ngFor="let data of dataJadwalUjian_sabtu">
-            <p style="padding-left: 10px;"><b>{{data.Nama}} | {{data.Kelas}} |
-                {{data.Tanggal_Ujian | date:'d MMM yyy'}}</b></p>
-            <p style="padding-left: 20px;">{{data.Jam_mulai}} - {{data.Jam_selesai}}</p>
-          </ion-card-content>
-        </ion-card>
       </ion-list>
     </ion-list>
 
