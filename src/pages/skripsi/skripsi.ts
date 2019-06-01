@@ -7,7 +7,7 @@ import { Skripsi } from '../../Skripsi';
 
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
-
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class SkripsiPage {
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider,
     public alerCtrl: AlertController, private transfer: FileTransfer, private file: File,
-    private loadingCtrl: LoadingController) {
+    private loadingCtrl: LoadingController, private document: DocumentViewer) {
     this.judul_page = "Skripsi"
 
     this.loading = this.loadingCtrl.create({
@@ -69,7 +69,9 @@ export class SkripsiPage {
     fileTransfer.download(url, dir, true).then((entry) => {
       // console.log('download complete: ' + entry.toURL());
       // console.log('download complete: ' + dir);
+      let urls = entry.toURL();
       this.showDownloadCompleted(file);
+      this.document.viewDocument(urls, 'application/pdf', {});
     }, (error) => {
       // handle error
       this.showDownloadError();

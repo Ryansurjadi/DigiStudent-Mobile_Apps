@@ -46,7 +46,7 @@ import { File } from '@ionic-native/file';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { IonicStorageModule } from '@ionic/storage';
 import { Camera } from '@ionic-native/camera';
-
+import { DocumentViewer } from '@ionic-native/document-viewer';
 
 @NgModule({
   declarations: [
@@ -86,6 +86,7 @@ import { Camera } from '@ionic-native/camera';
   providers: [
     OneSignal, Network, AndroidPermissions,
     File, FileTransfer, FileTransferObject,
+    DocumentViewer,
     Camera,
     StatusBar,
     SplashScreen,
