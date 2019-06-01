@@ -22,7 +22,7 @@ import { Listtugas } from '../../Listtugas';
 })
 export class KuliahPage {
   params: any;
-  dataTugas: Listtugas[];
+  dataList: Listtugas[];
   type: any = 'todo';
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
@@ -36,7 +36,7 @@ export class KuliahPage {
     return new Promise((resolve, reject) => {
       this.restProvider.getListTugas(this.params, this.type)
         .subscribe(data => {
-          this.dataTugas = data['data'];
+          this.dataList = data['data'];
         },
           error => {
             this.show404();
@@ -56,7 +56,7 @@ export class KuliahPage {
     setTimeout(() => {
       loading.dismiss();
       this.initialRequest();
-    }, 1000);
+    }, 5000);
   }
 
   goToJadwal() {

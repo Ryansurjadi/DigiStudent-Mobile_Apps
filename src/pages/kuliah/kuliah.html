@@ -13,16 +13,29 @@
 <ion-content>
   <br>
   <div class="utama">
-    <div class="wrapper">
-      <ion-row>
-        <ion-card *ngIf="dataTugas != null">
-          <ion-card-title>Tugas Mendatang</ion-card-title>
-          <ion-content *ngFor="let dt of dataTugas">
-            <h3>Tugas {{dt.Matakuliah}} </h3>
-            <p>{{dt.Deadline}}</p>
-          </ion-content>
-        </ion-card>
-      </ion-row>
+    <div class="wrapper" style="padding-bottom: 15px;">
+      <div cards>
+        <div class="grid-full">
+          <ion-row *ngIf="dataList != null">
+            <ion-card>
+              <ion-title style="padding: 10px !important;"><b>Daftar Tugas</b></ion-title>
+              <hr style="height: 2px;">
+              <ion-card-content *ngFor="let data of dataList">
+                &bull; Tugas {{data.Matakuliah}} dikumpul {{data.Deadline}}
+              </ion-card-content>
+            </ion-card>
+          </ion-row>
+          <ion-row *ngIf="dataList == null">
+            <ion-card>
+              <ion-title style="padding: 10px !important;"><b>Daftar Tugas</b></ion-title>
+              <hr style="height: 2px;">
+              <ion-card-content>
+                &bull; Belum ada Tugas
+              </ion-card-content>
+            </ion-card>
+          </ion-row>
+        </div>
+      </div>
     </div>
 
     <div class="wrapper">

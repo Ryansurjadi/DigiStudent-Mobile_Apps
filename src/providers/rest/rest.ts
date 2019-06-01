@@ -28,8 +28,8 @@ export class RestProvider {
   apiUrl: any;
 
   constructor(private http: HttpClient) {
-    //this.apiUrl = 'http://Restdsf.ryansurjadi.com/';
-    this.apiUrl = 'http://localhost/RestAPI/';
+    this.apiUrl = 'http://Restdsf.ryansurjadi.com/';
+    //this.apiUrl = 'http://localhost/RestAPI/';
   }
 
   Auth(input1, input2): Observable<Users[]> {

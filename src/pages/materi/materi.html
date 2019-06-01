@@ -15,7 +15,8 @@
     <ion-card *ngFor="let data of dataMateri">
       <ion-card-content>
         <p>{{data.Matakuliah}} - {{data.Kelas}}</p>
-        <button ion-button small outline class="right" (click)="goToPertemuan(data.Id_kelas)">Lihat Materi</button>
+        <button style="border-radius: 4px;" ion-button small outline class="right"
+          (click)="goToPertemuan(data.Id_kelas)">Lihat Materi</button>
       </ion-card-content>
     </ion-card>
   </ion-list>
