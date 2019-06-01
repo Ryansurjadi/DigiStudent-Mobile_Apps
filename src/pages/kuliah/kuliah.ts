@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { JadwalPage } from '../jadwal/jadwal';
 import { SkripsiPage } from '../skripsi/skripsi';
 import { DosenPage } from '../dosen/dosen';
 import { MateriPage } from '../materi/materi';
 import { TugasPage } from '../tugas/tugas';
-
+import { RestProvider } from '../../providers/rest/rest';
+import { Storage } from '@ionic/storage';
+import { Listtugas } from '../../Listtugas';
 /**
  * Generated class for the KuliahPage page.
  *
@@ -19,12 +21,42 @@ import { TugasPage } from '../tugas/tugas';
   templateUrl: 'kuliah.html',
 })
 export class KuliahPage {
+  params: any;
+  dataTugas: Listtugas[];
+  type: any = 'todo';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider,
+    public alerCtrl: AlertController, private storage: Storage, private loadingCtrl: LoadingController) {
+    storage.get('NIM').then((val) => {
+      this.params = val;
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad KuliahPage');
+  initialRequest() {
+    return new Promise((resolve, reject) => {
+      this.restProvider.getListTugas(this.params, this.type)
+        .subscribe(data => {
+          this.dataTugas = data['data'];
+        },
+          error => {
+            this.show404();
+          },
+          () => resolve("good")
+        );
+    });
+  }
+
+  ionViewWillEnter() {
+    let loading = this.loadingCtrl.create({
+      content: ' Mengambil Data ...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+      this.initialRequest();
+    }, 1000);
   }
 
   goToJadwal() {
@@ -45,5 +77,14 @@ export class KuliahPage {
 
   goToTugas() {
     this.navCtrl.push(TugasPage)
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////////
+  show404() {
+    const alert = this.alerCtrl.create({
+      title: 'Error',
+      subTitle: 'Terjadi Masalah, Silakan Buka Kembali Aplikasi ',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 }

@@ -13,9 +13,18 @@
 <ion-content>
   <br>
   <div class="utama">
-    <div cards>
-
+    <div class="wrapper">
+      <ion-row>
+        <ion-card *ngIf="dataTugas != null">
+          <ion-card-title>Tugas Mendatang</ion-card-title>
+          <ion-content *ngFor="let dt of dataTugas">
+            <h3>Tugas {{dt.Matakuliah}} </h3>
+            <p>{{dt.Deadline}}</p>
+          </ion-content>
+        </ion-card>
+      </ion-row>
     </div>
+
     <div class="wrapper">
       <div cards>
         <div class="grid-full">

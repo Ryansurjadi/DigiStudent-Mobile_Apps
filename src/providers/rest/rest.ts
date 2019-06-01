@@ -19,6 +19,7 @@ import { Tugas } from '../../Tugas';
 import { Pertemuan_tugas } from '../../Pertemuan_tugas';
 import { Users } from "../../Users";
 import { Dosendetail } from '../../dosendetail';
+import { Listtugas } from '../../Listtugas';
 
 
 @Injectable()
@@ -145,6 +146,16 @@ export class RestProvider {
       .get<Pertemuan_tugas[]>(this.apiUrl + 'Tugas', {
         params: {
           Id_kelas: id
+        }
+      });
+  }
+
+  getListTugas(id, type): Observable<Listtugas[]> {
+    return this.http
+      .get<Listtugas[]>(this.apiUrl + 'Tugas', {
+        params: {
+          NIM: id,
+          type: type
         }
       });
   }
