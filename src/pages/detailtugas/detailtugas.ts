@@ -53,7 +53,7 @@ export class DetailtugasPage {
     //const url = 'http://localhost/Digistudent/download/download_materi/' + id_kelas + '/' + pertemuan;
     const url = 'http://digitalstudent.ryansurjadi.com/Download/download_tugas/' + id_kelas + '/' + pertemuan;
     const file = 'Tugas_' + matkul + '_pertemuan_' + pertemuan + '-' + namafile.replace(/\//g, '_').slice(40);
-    const dir = this.file.externalRootDirectory + '/Download/' + file;
+    const dir = this.file.externalRootDirectory + '/Download/Tugas/' + file;
     fileTransfer.download(url, dir, true).then((entry) => {
       // console.log('download complete: ' + entry.toURL());
       // console.log('download complete: ' + dir);

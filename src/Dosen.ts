@@ -4,4 +4,5 @@ export interface Dosen {
     Keterangan: string;
     Email: string;
     Foto: string;
+    Nid: string;
 }

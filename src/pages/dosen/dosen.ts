@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage,, LoadingController } from 'ionic-angular';
+import { NavController, IonicPage,, LoadingController, ModalController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { AlertController } from 'ionic-angular';
 import { Dosen } from '../../Dosen';
+import { DetaildosenPage } from '../detaildosen/detaildosen';
 
 
 
@@ -16,10 +17,12 @@ export class DosenPage {
   judul: string;
   keyword: any = { Nama: '' };
   loading: any;
+  params: any;
 
 
   constructor(public navCtrl: NavController, public restProvider: RestProvider,
-    public alerCtrl: AlertController, private loadingCtrl: LoadingController) {
+    public alerCtrl: AlertController, public modalCtrl: ModalController,
+    private loadingCtrl: LoadingController) {
     this.judul = "Dosen"
 
     this.loading = this.loadingCtrl.create({
@@ -54,6 +57,11 @@ export class DosenPage {
       this.initialRequest();
       refresher.complete();
     }, 2000);
+  }
+
+  goToDetail(params) {
+    const modal = this.modalCtrl.create(DetaildosenPage, { ID: params });
+    modal.present();
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////////////////

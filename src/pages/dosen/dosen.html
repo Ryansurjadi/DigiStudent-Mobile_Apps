@@ -38,6 +38,11 @@
         </ion-row>
         <ion-row style="float: right !important;padding-top: 0 !important;padding-bottom: 6px !important;">
           <ion-buttons start>
+            <button ion-button small color="primary" (click)="goToDetail(data.Nid)">
+              <ion-icon name="calendar"></ion-icon>Cek Jadwal
+            </button>
+          </ion-buttons>
+          <ion-buttons start>
             <a ion-button small color="primary" outline href="mailto:{{data.Email}}">
               <ion-icon name="email"></ion-icon>Email
             </a>

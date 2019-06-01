@@ -18,6 +18,7 @@ import { Pertemuan } from '../../Pertemuan';
 import { Tugas } from '../../Tugas';
 import { Pertemuan_tugas } from '../../Pertemuan_tugas';
 import { Users } from "../../Users";
+import { Dosendetail } from '../../dosendetail';
 
 
 @Injectable()
@@ -26,8 +27,8 @@ export class RestProvider {
   apiUrl: any;
 
   constructor(private http: HttpClient) {
-    this.apiUrl = 'http://Restdsf.ryansurjadi.com/';
-    //this.apiUrl = 'http://localhost/RestAPI/';
+    //this.apiUrl = 'http://Restdsf.ryansurjadi.com/';
+    this.apiUrl = 'http://localhost/RestAPI/';
   }
 
   Auth(input1, input2): Observable<Users[]> {
@@ -62,6 +63,15 @@ export class RestProvider {
   getDosen(): Observable<Dosen[]> {
     return this.http
       .get<Dosen[]>(this.apiUrl + 'Dosen');
+  }
+
+  getJadwalDosen(id): Observable<Dosendetail[]> {
+    return this.http
+      .get<Dosendetail[]>(this.apiUrl + 'Dosen', {
+        params: {
+          Nid: id
+        }
+      });
   }
 
   getPengumuman(): Observable<Pengumuman[]> {
