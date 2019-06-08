@@ -23,8 +23,10 @@ export class NotesPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public Data: DataProvider) {
     this.Data.getNotes().then((notes) => {
-      this.items = notes;
-      console.log(this.items);
+      if (notes) {
+        this.items = notes;
+        console.log(this.items);
+      }
     });
   }
 
