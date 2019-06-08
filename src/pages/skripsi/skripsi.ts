@@ -65,7 +65,7 @@ export class SkripsiPage {
     //const url = 'http://localhost/Digistudent/download/download_materi/' + id_kelas + '/' + pertemuan;
     const url = 'http://digitalstudent.ryansurjadi.com/Download/download_skripsi/' + id_skripsi;
     const file = 'Skripsi-' + namafile.replace(/\//g, '_').slice(10);
-    const dir = this.file.externalRootDirectory + '/Download/Skripsi' + file;
+    const dir = this.file.externalRootDirectory + '/Download/Skripsi/' + file;
     fileTransfer.download(url, dir, true).then((entry) => {
       // console.log('download complete: ' + entry.toURL());
       // console.log('download complete: ' + dir);

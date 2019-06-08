@@ -56,7 +56,7 @@ export class DetailmateriPage {
     const fileTransfer: FileTransferObject = this.transfer.create();
     //const url = 'http://localhost/Digistudent/download/download_materi/' + id_kelas + '/' + pertemuan;
     const url = 'http://digitalstudent.ryansurjadi.com/Download/download_materi/' + id_kelas + '/' + pertemuan;
-    const file = matkul + '_pertemuan_' + pertemuan + '-' + namafile.replace(/\//g, '_').slice(40);
+    const file = matkul + '_pertemuan_' + pertemuan + '-' + namafile.replace(/\//g, '_').slice(10);
     const dir = this.file.externalRootDirectory + '/Download/Materi/' + file;
     fileTransfer.download(url, dir, true).then((entry) => {
       // console.log('download complete: ' + entry.toURL());
