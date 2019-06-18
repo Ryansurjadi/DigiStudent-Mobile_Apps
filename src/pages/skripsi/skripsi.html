@@ -9,7 +9,7 @@
     <ion-refresher-content pullingText="Tarik Untuk Refresh Halaman" refreshingSpinner="dots">
     </ion-refresher-content>
   </ion-refresher>
-  <ion-searchbar placeholder="Cari Judul Skripsi" [(ngModel)]="keyword.Mahasiswa"></ion-searchbar>
+  <ion-searchbar placeholder="Cari Judul Skripsi" [(ngModel)]="keyword.Judul"></ion-searchbar>
   <ion-list *ngIf="dataSkripsi != null">
     <ion-card *ngFor="let ds of dataSkripsi | filterBy:keyword">
       <ion-card-content>
